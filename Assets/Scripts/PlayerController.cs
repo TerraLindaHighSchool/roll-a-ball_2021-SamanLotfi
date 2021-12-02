@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
-    
+    public float jumpForce = 200;
     private Rigidbody rb;
+    
     private int count;
+    private float Onjump;
     private float movementX;
     private float movementY;
     // Start is called before the first frame update
