@@ -5,12 +5,17 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
+	
 	public TextMeshProUGUI countText;
 	public GameObject winTextObject;
+	
+	public LayerMask groundLayers;
+	public float jumpForce = 7;
 
 	private float movementX;
 	private float movementY;
 
+	private SphereCollider col;
 	private Rigidbody rb;
 	private int count;
 
@@ -23,6 +28,8 @@ public class PlayerController : MonoBehaviour
 		SetCountText();
 
 		winTextObject.SetActive(false);
+
+		col = GetComponent<SphereCollider>();
 	}
 
 	void FixedUpdate()
@@ -30,6 +37,11 @@ public class PlayerController : MonoBehaviour
 		Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
 		rb.AddForce(movement * speed);
+
+		if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        {
+			rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -61,4 +73,9 @@ public class PlayerController : MonoBehaviour
 			winTextObject.SetActive(true);
 		}
 	}
+	private bool IsGrounded()
+    {
+		return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x,
+			col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
+    }
 }
