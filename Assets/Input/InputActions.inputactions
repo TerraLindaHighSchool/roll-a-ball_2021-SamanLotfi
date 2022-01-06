@@ -263,9 +263,9 @@
                     "name": "",
                     "id": "2c20e7a5-7c32-4d76-8aed-1b288e6a8252",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
