@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
 	{
 		countText.text = "Count: " + count.ToString();
 
-		if (count >= 12)
+		if (count >= 19)
 		{
 			winTextObject.SetActive(true);
 		}
